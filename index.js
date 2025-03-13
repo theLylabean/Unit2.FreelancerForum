@@ -25,9 +25,9 @@ const newFreelancers = [
 // Step 3: create an init function
   function init(){
     const root = document.querySelector('#root')
-    const h1 = document.createElement('h1')
-    h1.innerHTML = 'Freelancer Forum'
-    root.append(h1)
+    const h2 = document.createElement('h2')
+    h2.innerHTML = '<u>Available Freelancers</u>'
+    root.append(h2)
 
 // Step 4: create a div for the Freelance container
     const freelancersContainer = document.createElement('div')
@@ -43,17 +43,21 @@ const currentAverage = () => {
   for(let i=0; i<freelancers.length; i++){
     total += Number(freelancers[i].price)
   }
-  console.log(total)
-  console.log(freelancers.length)
+  // console.log(total)
+  // console.log(freelancers.length)
 
   return Number(total / freelancers.length).toFixed(2)
 }
 
 // Step 11:
 function updateAverage(){
+  const textRoot = document.querySelector('#averageText')
+  const h3 = document.createElement('h1')
+  h3.innerHTML = '<u>Freelance Forum</u>'
+  textRoot.replaceChildren(h3)
   const avgRoot = document.querySelector('#average')
-  const average = document.createElement('h1')
-  average.innerText = `The total average price for the listed Freelancers is: $${currentAverage()}`
+  const average = document.createElement('h3')
+  average.innerHTML = `The total average price for the listed Freelancers is: <u>$${currentAverage()}</u>`
   avgRoot.replaceChildren(average)
 }
 
@@ -67,9 +71,9 @@ function updateAverage(){
       freelanceDiv.classList.add('freelance')
 
 // Step 6: inside the div, add the freelancers details - name, job, price
-      freelanceDiv.innerHTML = `<span>Name: ${freelance.name}</span>
-                                <span>Occupation: ${freelance.job}</span>
-                                <span>Starting Price: $${freelance.price}</span>`
+      freelanceDiv.innerHTML = `<span><b>Name:</b> <u>${freelance.name}</u></span>
+                                <span><b>Occupation:</b> <i><u>${freelance.job}</u></i></span>
+                                <span><b>Starting Price:</b> <u>$${freelance.price}</u></span>`
       container.append(freelanceDiv)
     })
   }
@@ -102,18 +106,18 @@ function updateAverage(){
 
 
 const addRandomFreelancer = () => {
-  console.log(newFreelancers)
+  //console.log(newFreelancers)
   if (newFreelancers.length <= 1) {
     return -1; // Not enough options to choose from
   }
 
   let randomIndex = Math.floor(Math.random() * newFreelancers.length);
-  console.log(randomIndex)
+  //console.log(randomIndex)
   if(randomIndex === 0){
     randomIndex += 1
   }
   const selectedFreelancer = newFreelancers[randomIndex]; 
-  console.log(selectedFreelancer)
+  //console.log(selectedFreelancer)
   // Get freelancer from newFreelancers
 
   freelancers.push(selectedFreelancer); // Add to original freelancers array
